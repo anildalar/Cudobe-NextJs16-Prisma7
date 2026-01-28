@@ -15,17 +15,22 @@ datasource db {
 
 model User {
   id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  surname  String?
-  posts Post[]
+  fname    String
+  lname    String
+  username String @unique
+  password String
+  roleId   Int
+  role     Role   @relation(fields: [roleId], references: [id], onDelete: Restrict)
+  
+  @@map("users")
 }
 
-model Post {
-  id        Int     @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean @default(false)
-  authorId  Int
-  author    User    @relation(fields: [authorId], references: [id])
+model Role {
+  id        Int    @id @default(autoincrement())
+  name      String
+  roleCode  String @unique
+
+  users     User[]
+
+  @@map("roles")
 }

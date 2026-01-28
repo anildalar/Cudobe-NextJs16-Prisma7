@@ -10,56 +10,29 @@ const prisma = new PrismaClient({
   adapter,
 });
 
-const userData: Prisma.UserCreateInput[] = [
-  {
-    name: "Anil",
-    email: "alice@prisma.io",
-    posts: {
-      create: [
-        {
-          title: "Join the Prisma Discord",
-          content: "https://pris.ly/discord",
-          published: true,
-        },
-        {
-          title: "Prisma on YouTube",
-          content: "https://pris.ly/youtube",
-        },
-      ],
-    },
-  },
-  {
-    name: "Vijay",
-    email: "bob@prisma.io",
-    posts: {
-      create: [
-        {
-          title: "Follow Prisma on Twitter",
-          content: "https://www.twitter.com/prisma",
-          published: true,
-        },
-      ],
-    },
-  },
-  {
-    name: "Chitransh",
-    email: "bob@prisma.io",
-    posts: {
-      create: [
-        {
-          title: "Follow Prisma on Twitter",
-          content: "https://www.twitter.com/prisma",
-          published: true,
-        },
-      ],
-    },
-  },
-];
-
 export async function main() {
-  for (const u of userData) {
-    await prisma.user.create({ data: u });
+  console.log("🌱 Seeding roles...");
+
+  const roles = [
+    { id: 1, name: "Importer", roleCode: "importer" },
+    { id: 2, name: "Exporter", roleCode: "exporter" },
+    { id: 3, name: "ImporterExporter", roleCode: "importer_exporter" },
+    { id: 4, name: "Admin", roleCode: "admin" },
+    { id: 5, name: "CustomerCare", roleCode: "customercare" },
+  ];
+
+  for (const role of roles) {
+    await prisma.role.upsert({
+      where: { id: role.id },
+      update: {
+        name: role.name,
+        roleCode: role.roleCode,
+      },
+      create: role,
+    });
   }
+
+  console.log("✅ Roles seeded successfully!");
 }
 
 main();
