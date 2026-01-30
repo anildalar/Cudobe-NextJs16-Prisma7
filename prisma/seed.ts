@@ -12,7 +12,7 @@ const prisma = new PrismaClient({
 
 export async function main() {
   console.log("🌱 Seeding roles...");
-
+  
   const roles = [
     { id: 1, name: "Importer", roleCode: "importer" },
     { id: 2, name: "Exporter", roleCode: "exporter" },
@@ -29,7 +29,7 @@ export async function main() {
         roleCode: role.roleCode,
       },
       create: role,
-    });
+    }); 
   }
 
   console.log("✅ Roles seeded successfully!");

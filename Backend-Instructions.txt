@@ -3718,3 +3718,109 @@ Typescript
 let   variable: type;
 var   variable: type;
 const variable: type;
+      variable: type
+	fa1: number
+  let variable: any;
+
+
+layout.tsx
+page.tsx
+
+ts = typescript
+x  = xml = Extensible Markup Language
+
+
+
+
+You need to register the user
+
+You need to insert something in db
+
+1. API  -----> Frontend Call the APi ---->
+	Client Side Component   "use client"
+	http://localhost:3000/api/v1/register
+	http://localhost:3000/api/v2/register
+	http://localhost:3000/api/v2/register
+2. ServerSide
+
+
+NextJs Component TYpes
+	1. Client Side Component
+	2. ServerSide Component
+
+
+app/items/route.js
+
+http://localhost:3000/items
+
+
+http://localhost:3000/api/v1/register
+
+app/api/v1/register/route.js
+
+
+http://localhost:3000/api/v1/register
+1. POST  export async function POST(request: Request) {}
+2. GET   export async function GET(request: Request) {}
+
+
+
+Client ------------------------ REquest --------------------> Server
+		http://localhost:3000/api/v1/register
+POSTMAN
+{
+	fname:"",
+	lname:"",
+	email:"",
+	pass:"123",
+	cpass:"456",
+}
+
+
+
+
+Client <------------------------ Response -------------------- Server
+		               ResponseCode 200 = OK
+				"Hello"
+{
+	property:"Hello"
+}
+
+
+Jo Liya Vo Hi Hum Return Karenge Response me
+
+				
+
+
+TS   -----------Convert --------> JS
+		Compiler
+		TSC
+		C Compoler
+
+
+TypeScript offers two ways to work with types:
+
+1. Explicit -> Manual -> Developer will write the types
+2. Implicit(Type Inference) -> Automatic
+
+
+OneDataType to AnotherDataType
+
+Typecasting/TypeConversion
+
+"123"    ------------>    123
+string   ------------>    number
+
+
+if(payload.email.includes("@") && payload.email.includes(".")){
+
+}	
+
+if(true){
+	
+}	
+
+
+Types Of Validation
+1. ClientSide
+2. ServerSide Validation
