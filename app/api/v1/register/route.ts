@@ -3,6 +3,8 @@
 
 import { prisma } from "@/app/lib/prisma";
 
+import bcrypt from "bcrypt";
+
 // We can also export it
 // I can export anything in JS/TS
 export async function POST(request: Request) {
@@ -16,8 +18,8 @@ export async function POST(request: Request) {
     console.log(typeof payload.pass);
     console.log(typeof payload.cpass);
 
-    let p = payload.pass;
-    let cp = payload.cpass;
+    let p: any = payload.pass;
+    let cp: any = payload.cpass;
 
     //THis is example ServerSide Validation
     if(p==cp){
@@ -29,20 +31,42 @@ export async function POST(request: Request) {
                 //All data is validated
                 //Lets store into the database
                 //prisma.model.create();
+
+                //Psudo Code
+                //First we will check if the email address is already in the db user tbl
+
+                const existingUser = await prisma.user.findUnique({
+                    where: {
+                        username: payload.email
+                    }
+                });
+                //object.method(aa1[,aa2])
+                console.log(' existingUser >>>>>',existingUser);
+                if(existingUser){
+                    return Response.json({"msg":"User Already Exist"})
+                }
+                const saltRounds = 10;
+                const hash = bcrypt.hashSync(p, saltRounds);
+                const role = await prisma.role.findUnique({
+                    where: {
+                        roleCode: payload.role_type,
+                    },
+                });
+
                 const user = await prisma.user.create({
-                        data: {
-                            fname:payload.fname,
-                            lname:payload.lname,
-                            username:payload.email,
-                            password: p,
-                            roleId: 1
-                        }
-                    });
+                    data: {
+                        fname:payload.fname,
+                        lname:payload.lname,
+                        username:payload.email,
+                        password: hash,
+                        roleId: role.id
+                    }
+                });
+                delete user.password;
                 return Response.json(
                                         { msg: "User registered successfully", user },
                                         { status: 201 }
                                     );    
-                //return Response.json({payload})
             }else{
                 return Response.json({"msg":"Invalid roleType"})
             }
