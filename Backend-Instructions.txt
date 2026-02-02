@@ -3824,3 +3824,71 @@ if(true){
 Types Of Validation
 1. ClientSide
 2. ServerSide Validation
+
+
+
+
+Linux OS
+
+WSL -> Windows SubSystem Linux
+
+
+users
+	id
+	
+
+	createdAt  manual 
+	updatedAt  prisma Schemea
+
+
+
+npx = Node Package Execute
+npm = Node Package Manager
+nvm = Node Version Manager
+
+
+NextJS = React + NodeJs/ExpressJs = FullStack Framework
+
+NextJS = Frontend + Backend
+	  UI = User Interface
+       = ReactJs
+
+
+
+ReactJs Componets
+	1. RFC = React Functional Component (New)
+	2. RCC = React Class Component  (Old/Expire)
+
+NextJs Componets
+	1. Client Component  "use client"
+	2. Serverside Component
+
+
+<></>
+
+Empty Tag
+ <>
+ </>
+
+
+Self Close
+
+<div>Anil</div>
+<StartTag>ContentArea</EndTag>	
+
+
+<div></div>
+
+SelfClose 
+<div />
+
+
+
+Client ----------------------------> Server
+
+Browser
+<form>
+
+
+
+
