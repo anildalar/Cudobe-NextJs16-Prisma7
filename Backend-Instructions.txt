@@ -3886,8 +3886,54 @@ SelfClose
 
 Client ----------------------------> Server
 
+page.tsx
 Browser
 <form>
+
+
+NextJs 
+	1. Clientside Comp
+		page.tsx --> "use client"
+	2. ServerSide Comp 
+		page.tsx --> 	
+
+"use client"
+
+
+<form>
+</form>
+
+ReactJs/ AngularJs / VueJs
+
+How to call the api ?
+
+1. XMLHTTP Request  (JS built-in)
+2. Fetch API	    (JS built-in)	
+3. Axios	    (3rd Party Library)  
+	npm install libName		
+
+
+
+
+Whenver you are calling any api you should use
+
+TryCatch block
+
+Whenver you are performing any DB Operation you should use
+CRUD
+TryCatch block
+
+
+object.method(aa1,aa2)
+object.method("",{})
+object.method(string,object)
+axios.post();
+
+
+object.method(aa1,aa2,aa2)
+Response.json({"msg":"User Already Exist"})
+
+
 
 
 

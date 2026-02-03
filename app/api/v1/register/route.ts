@@ -43,7 +43,10 @@ export async function POST(request: Request) {
                 //object.method(aa1[,aa2])
                 console.log(' existingUser >>>>>',existingUser);
                 if(existingUser){
-                    return Response.json({"msg":"User Already Exist"})
+                    return Response.json(
+                                            {"msg":"User Already Exist"},
+                                            { status: 409 }
+                                        )
                 }
                 const saltRounds = 10;
                 const hash = bcrypt.hashSync(p, saltRounds);
